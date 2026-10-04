@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practical Business Kits — Tiger Operations</title>
+<meta name="description" content="170 ready-to-use business kits: SOP packs, swipe files, proposal kits, review monitors, alert digests. Built by Tiger Operations.">
+<style>
+body{font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:24px 20px;line-height:1.6;color:#1a1a1a}
+header{text-align:center;margin-bottom:32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{border:1px solid #ddd;border-radius:10px;padding:16px}
+.card h3{margin:0 0 4px;font-size:1.05em}
+.price{font-weight:bold;color:#0a7a3d;margin:4px 0}
+.blurb{font-size:.88em;color:#444}
+input{width:100%;box-sizing:border-box;padding:9px;margin:8px 0;font-size:.95em}
+button{width:100%;padding:10px;background:#0a7a3d;color:#fff;border:0;border-radius:6px;cursor:pointer;font-size:1em}
+.msg{font-size:.85em;color:#0a7a3d;min-height:1.2em}
+footer{margin-top:48px;font-size:.85em;color:#666;text-align:center}
+#search{width:100%;box-sizing:border-box;padding:12px;font-size:1em;margin:16px 0;border:1px solid #ccc;border-radius:8px}
+</style></head>
+<body>
+<header>
+<h1>Practical Business Kits</h1>
+<p>170 ready-to-use kits for small businesses. SOP packs, swipe files, proposal kits, review monitors, alert digests.<br>Built by Tiger Operations. Real products — no fake testimonials, no countdown timers.</p>
+<input id="search" placeholder="Search kits — try 'dentist', 'proposal', 'review'..." oninput="filterKits()">
+</header>
+<div class="grid" id="grid">
+<div class="card" id="competitorwatch">
+<h3>Your competitors move every week.&lt;br&gt;You&#x27;re busy. We watch.</h3>
+<p class="price">$59&lt;small&gt;/month&lt;/small&gt;</p>
+<p>CompetitorWatch is a weekly email briefing: you name up to 5 competitors, and every Monday morning you get what they did last week — pricing changes, product launches, hiring signals, press mentions — tracked across the public web and written up so you can act on it.</p>
+<p class="blurb">CompetitorWatch does the watching for you. One email, every Monday, covering exactly the companies you care about.</p>
+<input data-kit="competitorwatch" type="email" placeholder="you@example.com">
+<button onclick="notify('competitorwatch')">Get it</button>
+<p class="msg" id="msg-competitorwatch"></p>
+</div><div class="card" id="invoicechaser">
+<h3>InvoiceChaser</h3>
+<p class="price">$12/month</p>
+<p>You did the work. You sent the invoice. Now it&#x27;s 23 days overdue and you&#x27;re rewriting a &quot;just following up&quot; email for the fourth time, trying to sound friendly when you feel anything but.</p>
+<p class="blurb">Start getting paid — $12/mo</p>
+<input data-kit="invoicechaser" type="email" placeholder="you@example.com">
+<button onclick="notify('invoicechaser')">Get it</button>
+<p class="msg" id="msg-invoicechaser"></p>
+</div><div class="card" id="leadrefresh">
+<h3>LeadRefresh</h3>
+<p class="price">$0.15 per verified</p>
+<p>A lead list is a snapshot. The day you buy or build it, the clock starts: people get promoted, laid off, and hired elsewhere; domains expire; companies merge or fold. Industry estimates put contact-data decay at about 2–3% per month — which means a 10,000-row list can lose over 2,000 good contacts in a year if nobody maintains it.</p>
+<p class="blurb">You send us a CSV with name, email, company, title. We send back the cleaned file and the report. That&#x27;s the whole service.</p>
+<input data-kit="leadrefresh" type="email" placeholder="you@example.com">
+<button onclick="notify('leadrefresh')">Get it</button>
+<p class="msg" id="msg-leadrefresh"></p>
+</div><div class="card" id="quotesnap">
+<h3>QuoteSnap</h3>
+<p class="price">$19/month</p>
+<p>Most contractors quote the same way: a notebook scribble, a spreadsheet that&#x27;s missing the markup column, or — worst — a text message the client can&#x27;t forward to their spouse. The result: slow quotes, lost jobs, and evenings burned doing paperwork instead of resting. QuoteSnap exists for one job only: turn your job details into a clean, branded quote fast, so you look professional and get back to work (or home).</p>
+<p class="blurb">Add rows for materials, labor, and anything else — description, quantity, and unit price. Totals, and optional tax, calculate automatically.</p>
+<input data-kit="quotesnap" type="email" placeholder="you@example.com">
+<button onclick="notify('quotesnap')">Get it</button>
+<p class="msg" id="msg-quotesnap"></p>
+</div><div class="card" id="verdictdesk">
+<h3>VerdictDesk</h3>
+<p class="price">$0.05 </p>
+<p>Every idea is scored on the same five dimensions, every time. The rubric is published below and doesn&#x27;t change between calls.</p>
+<p class="blurb">Payment terms at /.well-known/x402, an OpenAPI doc at /openapi.json, and an agent description at /llms.txt. Agents can discover and pay without a human in the loop.</p>
+<input data-kit="verdictdesk" type="email" placeholder="you@example.com">
+<button onclick="notify('verdictdesk')">Get it</button>
+<p class="msg" id="msg-verdictdesk"></p>
+</div><div class="card" id="alertdigest-laundromats">
+<h3>Alert Digest for Laundromats</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your laundromat, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-laundromats" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-laundromats')">Get it</button>
+<p class="msg" id="msg-alertdigest-laundromats"></p>
+</div><div class="card" id="proposalkit-locksmiths">
+<h3>Proposal Kit for Locksmiths</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for locksmith jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-locksmiths" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-locksmiths')">Get it</button>
+<p class="msg" id="msg-proposalkit-locksmiths"></p>
+</div><div class="card" id="reviewmonitor-yogastudios">
+<h3>Review Monitor for Yoga Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-yogastudios" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-yogastudios')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-yogastudios"></p>
+</div><div class="card" id="soppack-salons">
+<h3>SOP Pack for Salons</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a salon repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-salons" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-salons')">Get it</button>
+<p class="msg" id="msg-soppack-salons"></p>
+</div><div class="card" id="swipefile-foodtrucks">
+<h3>Swipe File for Food Trucks</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for food trucks — locations, specials, catering, slow days.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-foodtrucks" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-foodtrucks')">Get it</button>
+<p class="msg" id="msg-swipefile-foodtrucks"></p>
+</div><div class="card" id="alertdigest-storage">
+<h3>Alert Digest for Storage Facilities</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your storage facility, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-storage" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-storage')">Get it</button>
+<p class="msg" id="msg-alertdigest-storage"></p>
+</div><div class="card" id="proposalkit-poolcleaners">
+<h3>Proposal Kit for Pool Cleaners</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for pool jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-poolcleaners" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-poolcleaners')">Get it</button>
+<p class="msg" id="msg-proposalkit-poolcleaners"></p>
+</div><div class="card" id="reviewmonitor-martialarts">
+<h3>Review Monitor for Martial Arts Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-martialarts" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-martialarts')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-martialarts"></p>
+</div><div class="card" id="soppack-dogtrainers">
+<h3>SOP Pack for Dog Trainers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a dog trainer repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-dogtrainers" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-dogtrainers')">Get it</button>
+<p class="msg" id="msg-soppack-dogtrainers"></p>
+</div><div class="card" id="swipefile-drycleaners">
+<h3>Swipe File for Dry Cleaners</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for dry cleaners — pickup, stains, weddings, win-back.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-drycleaners" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-drycleaners')">Get it</button>
+<p class="msg" id="msg-swipefile-drycleaners"></p>
+</div><div class="card" id="alertdigest-escaperooms">
+<h3>Alert Digest for Escape Rooms</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your escape room, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-escaperooms" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-escaperooms')">Get it</button>
+<p class="msg" id="msg-alertdigest-escaperooms"></p>
+</div><div class="card" id="proposalkit-fence">
+<h3>Proposal Kit for Fence Companies</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for fence jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-fence" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-fence')">Get it</button>
+<p class="msg" id="msg-proposalkit-fence"></p>
+</div><div class="card" id="reviewmonitor-dancestudios">
+<h3>Review Monitor for Dance Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-dancestudios" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-dancestudios')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-dancestudios"></p>
+</div><div class="card" id="soppack-housecleaners">
+<h3>SOP Pack for House Cleaners</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a house cleaner repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-housecleaners" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-housecleaners')">Get it</button>
+<p class="msg" id="msg-soppack-housecleaners"></p>
+</div><div class="card" id="swipefile-tattoo">
+<h3>Swipe File for Tattoo Studios</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for tattoo studios — booking, deposits, flash, aftercare.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-tattoo" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-tattoo')">Get it</button>
+<p class="msg" id="msg-swipefile-tattoo"></p>
+</div><div class="card" id="alertdigest-weddingplanners">
+<h3>Alert Digest for Wedding Planners</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your planning business, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-weddingplanners" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-weddingplanners')">Get it</button>
+<p class="msg" id="msg-alertdigest-weddingplanners"></p>
+</div><div class="card" id="proposalkit-garagedoors">
+<h3>Proposal Kit for Garage-Door Companies</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for garage-door jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-garagedoors" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-garagedoors')">Get it</button>
+<p class="msg" id="msg-proposalkit-garagedoors"></p>
+</div><div class="card" id="reviewmonitor-bowlingalleys">
+<h3>Review Monitor for Bowling Alleys</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-bowlingalleys" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-bowlingalleys')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-bowlingalleys"></p>
+</div><div class="card" id="soppack-treeservices">
+<h3>SOP Pack for Tree Services</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a tree crew repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-treeservices" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-treeservices')">Get it</button>
+<p class="msg" id="msg-soppack-treeservices"></p>
+</div><div class="card" id="swipefile-dogwalkers">
+<h3>Swipe File for Dog Walkers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for dog walkers — booking, weather, holidays, referrals.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-dogwalkers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-dogwalkers')">Get it</button>
+<p class="msg" id="msg-swipefile-dogwalkers"></p>
+</div><div class="card" id="alertdigest-tutoring">
+<h3>Alert Digest for Tutoring Centers</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your tutoring business, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-tutoring" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-tutoring')">Get it</button>
+<p class="msg" id="msg-alertdigest-tutoring"></p>
+</div><div class="card" id="proposalkit-junkremoval">
+<h3>Proposal Kit for Junk Removal</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for junk removal jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-junkremoval" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-junkremoval')">Get it</button>
+<p class="msg" id="msg-proposalkit-junkremoval"></p>
+</div><div class="card" id="reviewmonitor-axethrowing">
+<h3>Review Monitor for Axe-Throwing Venues</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-axethrowing" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-axethrowing')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-axethrowing"></p>
+</div><div class="card" id="soppack-funeralhomes">
+<h3>SOP Pack for Funeral Homes</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the moments a funeral home can&#x27;t afford to get wrong.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-funeralhomes" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-funeralhomes')">Get it</button>
+<p class="msg" id="msg-soppack-funeralhomes"></p>
+</div><div class="card" id="swipefile-mobilemechanics">
+<h3>Swipe File for Mobile Mechanics</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for mobile mechanics — booking, diagnosis, fleet, warranty.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-mobilemechanics" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-mobilemechanics')">Get it</button>
+<p class="msg" id="msg-swipefile-mobilemechanics"></p>
+</div><div class="card" id="alertdigest-insurance">
+<h3>Alert Digest for Insurance Agents</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your insurance agency, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-insurance" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-insurance')">Get it</button>
+<p class="msg" id="msg-alertdigest-insurance"></p>
+</div><div class="card" id="proposalkit-pressurewashing">
+<h3>Proposal Kit for Pressure Washing</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for pressure washing jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-pressurewashing" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-pressurewashing')">Get it</button>
+<p class="msg" id="msg-proposalkit-pressurewashing"></p>
+</div><div class="card" id="reviewmonitor-pickleball">
+<h3>Review Monitor for Pickleball Clubs</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-pickleball" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-pickleball')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-pickleball"></p>
+</div><div class="card" id="soppack-chimneysweeps">
+<h3>SOP Pack for Chimney Sweeps</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for chimney sweeps — inspections, cleanings, repairs, and the upsells that actually sell.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-chimneysweeps" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-chimneysweeps')">Get it</button>
+<p class="msg" id="msg-soppack-chimneysweeps"></p>
+</div><div class="card" id="swipefile-boatdetailers">
+<h3>Swipe File for Boat Detailers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for boat detailers — booking, oxidation, ceramic, marina referrals.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-boatdetailers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-boatdetailers')">Get it</button>
+<p class="msg" id="msg-swipefile-boatdetailers"></p>
+</div><div class="card" id="alertdigest-weddingvenues">
+<h3>Alert Digest for Wedding Venues</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your wedding venue, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-weddingvenues" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-weddingvenues')">Get it</button>
+<p class="msg" id="msg-alertdigest-weddingvenues"></p>
+</div><div class="card" id="proposalkit-solar">
+<h3>Proposal Kit for Solar Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for solar installs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-solar" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-solar')">Get it</button>
+<p class="msg" id="msg-proposalkit-solar"></p>
+</div><div class="card" id="reviewmonitor-climbinggyms">
+<h3>Review Monitor for Rock-Climbing Gyms</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-climbinggyms" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-climbinggyms')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-climbinggyms"></p>
+</div><div class="card" id="soppack-septicservices">
+<h3>SOP Pack for Septic Services</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for septic companies — pumping, inspections, repairs, and the upsells that actually sell.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-septicservices" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-septicservices')">Get it</button>
+<p class="msg" id="msg-soppack-septicservices"></p>
+</div><div class="card" id="swipefile-rvrentals">
+<h3>Swipe File for RV Rentals</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for RV rental owners — booking, insurance, deposits, reactivation.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-rvrentals" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-rvrentals')">Get it</button>
+<p class="msg" id="msg-swipefile-rvrentals"></p>
+</div><div class="card" id="alertdigest-accountants">
+<h3>Alert Digest for Accountants</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your accounting practice, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-accountants" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-accountants')">Get it</button>
+<p class="msg" id="msg-alertdigest-accountants"></p>
+</div><div class="card" id="proposalkit-smarthome">
+<h3>Proposal Kit for Smart Home Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for smart home installs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-smarthome" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-smarthome')">Get it</button>
+<p class="msg" id="msg-proposalkit-smarthome"></p>
+</div><div class="card" id="reviewmonitor-photobooth">
+<h3>Review Monitor for Photo Booth Rentals</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-photobooth" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-photobooth')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-photobooth"></p>
+</div><div class="card" id="soppack-irrigation">
+<h3>SOP Pack for Irrigation Services</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for irrigation companies — design, install, startup, winterization, and the maintenance plans that recur.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-irrigation" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-irrigation')">Get it</button>
+<p class="msg" id="msg-soppack-irrigation"></p>
+</div><div class="card" id="swipefile-homestagers">
+<h3>Swipe File for Home Stagers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for home stagers — realtors, listings, consults, and follow-ups that book jobs.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-homestagers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-homestagers')">Get it</button>
+<p class="msg" id="msg-swipefile-homestagers"></p>
+</div><div class="card" id="alertdigest-notaries">
+<h3>Alert Digest for Notaries</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your notary business, every morning. Three minutes, then back to stamping.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-notaries" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-notaries')">Get it</button>
+<p class="msg" id="msg-alertdigest-notaries"></p>
+</div><div class="card" id="proposalkit-guttercleaning">
+<h3>Proposal Kit for Gutter Cleaning Companies</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for gutter jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-guttercleaning" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-guttercleaning')">Get it</button>
+<p class="msg" id="msg-proposalkit-guttercleaning"></p>
+</div><div class="card" id="reviewmonitor-boardgamecafes">
+<h3>Review Monitor for Board-Game Cafes</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-boardgamecafes" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-boardgamecafes')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-boardgamecafes"></p>
+</div><div class="card" id="soppack-holidaylights">
+<h3>SOP Pack for Holiday-Light Installers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for holiday-light installers — design, install, takedown, storage, and the off-season revenue that keeps crews paid.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-holidaylights" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-holidaylights')">Get it</button>
+<p class="msg" id="msg-soppack-holidaylights"></p>
+</div><div class="card" id="swipefile-personaltrainers">
+<h3>Swipe File for Personal Trainers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for personal trainers — booking, onboarding, upsells, and reactivations that fill the roster.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-personaltrainers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-personaltrainers')">Get it</button>
+<p class="msg" id="msg-swipefile-personaltrainers"></p>
+</div><div class="card" id="alertdigest-weddingphotographers">
+<h3>Alert Digest for Wedding Photographers</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your wedding photography business, every morning. Three minutes, then back to shooting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-weddingphotographers" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-weddingphotographers')">Get it</button>
+<p class="msg" id="msg-alertdigest-weddingphotographers"></p>
+</div><div class="card" id="proposalkit-waterdamage">
+<h3>Proposal Kit for Water-Damage Restoration</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for water jobs in minutes — emergency pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-waterdamage" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-waterdamage')">Get it</button>
+<p class="msg" id="msg-proposalkit-waterdamage"></p>
+</div><div class="card" id="reviewmonitor-petsitters">
+<h3>Review Monitor for Pet Sitters</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-petsitters" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-petsitters')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-petsitters"></p>
+</div><div class="card" id="soppack-nutritioncoaches">
+<h3>SOP Pack for Nutrition Coaches</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for nutrition coaches — intake, macros, habit design, check-ins, and the retention systems that keep clients paying.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-nutritioncoaches" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-nutritioncoaches')">Get it</button>
+<p class="msg" id="msg-soppack-nutritioncoaches"></p>
+</div><div class="card" id="swipefile-rephotographers">
+<h3>Swipe File for Real-Estate Photographers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for real-estate photographers — booking, upsells, reviews, and reactivations that fill the calendar.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-rephotographers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-rephotographers')">Get it</button>
+<p class="msg" id="msg-swipefile-rephotographers"></p>
+</div><div class="card" id="agencyaudit">
+<h3>AgencyAudit</h3>
+<p class="price">$25 one-time</p>
+<p>You sell marketing to clients, but when did someone last audit yours? Your site is your best case study — and most agencies are sitting on broken meta tags, a 9-second homepage, and no analytics.</p>
+<p class="blurb"></p>
+<input data-kit="agencyaudit" type="email" placeholder="you@example.com">
+<button onclick="notify('agencyaudit')">Get it</button>
+<p class="msg" id="msg-agencyaudit"></p>
+</div><div class="card" id="booksmart">
+<h3>BookSmart</h3>
+<p class="price">$0.10 per booked</p>
+<p>Every &quot;let&#x27;s find a time&quot; email thread costs you a lead. BookSmart gives your agency a clean booking page: prospects pick a service, grab a time, and you get the booking by email. No Calendly branding, no monthly seat fees.</p>
+<p class="blurb"></p>
+<input data-kit="booksmart" type="email" placeholder="you@example.com">
+<button onclick="notify('booksmart')">Get it</button>
+<p class="msg" id="msg-booksmart"></p>
+</div><div class="card" id="datasnapshot">
+<h3>DataSnapshot</h3>
+<p class="price">$49/mo</p>
+<p>Competitors change pricing, launch pages, and rewrite headlines while you&#x27;re busy with client work. DataSnapshot watches the pages you care about and sends you a plain-English diff every Monday morning.</p>
+<p class="blurb"></p>
+<input data-kit="datasnapshot" type="email" placeholder="you@example.com">
+<button onclick="notify('datasnapshot')">Get it</button>
+<p class="msg" id="msg-datasnapshot"></p>
+</div><div class="card" id="missedcall">
+<h3>MissedCall Texter</h3>
+<p class="price">$0.10 per text</p>
+<p>78% of callers who reach voicemail never call back. They call your competitor instead. A missed call isn&#x27;t a missed call — it&#x27;s a lead walking out the door.</p>
+<p class="blurb"></p>
+<input data-kit="missedcall" type="email" placeholder="you@example.com">
+<button onclick="notify('missedcall')">Get it</button>
+<p class="msg" id="msg-missedcall"></p>
+</div><div class="card" id="upsellengine">
+<h3>UpsellEngine</h3>
+<p class="price">$1</p>
+<p>Your cheapest new revenue is sitting in your existing clients. The one-service client who&#x27;s been with you 18 months. The account whose spend flatlined a year ago. You know they&#x27;re there — you just never get around to working the list.</p>
+<p class="blurb"></p>
+<input data-kit="upsellengine" type="email" placeholder="you@example.com">
+<button onclick="notify('upsellengine')">Get it</button>
+<p class="msg" id="msg-upsellengine"></p>
+</div><div class="card" id="alertdigest-bookkeepers">
+<h3>Alert Digest for Bookkeepers</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your bookkeeping practice, every morning. Three minutes, then back to the ledger.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-bookkeepers" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-bookkeepers')">Get it</button>
+<p class="msg" id="msg-alertdigest-bookkeepers"></p>
+</div><div class="card" id="proposalkit-deckbuilders">
+<h3>Proposal Kit for Deck Builders</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for deck jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-deckbuilders" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-deckbuilders')">Get it</button>
+<p class="msg" id="msg-proposalkit-deckbuilders"></p>
+</div><div class="card" id="reviewmonitor-bikeshops">
+<h3>Review Monitor for Bike Shops</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-bikeshops" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-bikeshops')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-bikeshops"></p>
+</div><div class="card" id="soppack-lifecoaches">
+<h3>SOP Pack for Life Coaches</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for life coaches — discovery calls, session arcs, belief work, pricing, and the alumni engine that keeps referrals flowing.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-lifecoaches" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-lifecoaches')">Get it</button>
+<p class="msg" id="msg-soppack-lifecoaches"></p>
+</div><div class="card" id="swipefile-podcasteditors">
+<h3>Swipe File for Podcast Editors</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for podcast editors — booking, pricing, upsells, and reactivations that fill the calendar.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-podcasteditors" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-podcasteditors')">Get it</button>
+<p class="msg" id="msg-swipefile-podcasteditors"></p>
+</div><div class="card" id="alertdigest-vetclinics">
+<h3>Alert Digest for Veterinary Clinics</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your practice, every morning. Three minutes, then back to the exam room.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-vetclinics" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-vetclinics')">Get it</button>
+<p class="msg" id="msg-alertdigest-vetclinics"></p>
+</div><div class="card" id="proposalkit-landscapelighting">
+<h3>Proposal Kit for Landscape Lighting Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for lighting jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-landscapelighting" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-landscapelighting')">Get it</button>
+<p class="msg" id="msg-proposalkit-landscapelighting"></p>
+</div><div class="card" id="reviewmonitor-comicbookstores">
+<h3>Review Monitor for Comic-Book Stores</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-comicbookstores" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-comicbookstores')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-comicbookstores"></p>
+</div><div class="card" id="soppack-homeinspectors">
+<h3>SOP Pack for Home Inspectors</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for home inspectors — intake, every major system, same-day reports, and the agent relationships that fill the schedule.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-homeinspectors" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-homeinspectors')">Get it</button>
+<p class="msg" id="msg-soppack-homeinspectors"></p>
+</div><div class="card" id="swipefile-weddingdjs">
+<h3>Swipe File for Wedding DJs</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for wedding DJs — booking, pricing, upsells, and the reviews that book next season.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-weddingdjs" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-weddingdjs')">Get it</button>
+<p class="msg" id="msg-swipefile-weddingdjs"></p>
+</div><div class="card" id="alertdigest-propertymanagers">
+<h3>Alert Digest for Property Managers</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your portfolio, every morning. Three minutes, then back to the units.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-propertymanagers" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-propertymanagers')">Get it</button>
+<p class="msg" id="msg-alertdigest-propertymanagers"></p>
+</div><div class="card" id="proposalkit-poolbuilders">
+<h3>Proposal Kit for Pool Builders</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for pool projects in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-poolbuilders" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-poolbuilders')">Get it</button>
+<p class="msg" id="msg-proposalkit-poolbuilders"></p>
+</div><div class="card" id="reviewmonitor-recordstores">
+<h3>Review Monitor for Vinyl Record Stores</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-recordstores" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-recordstores')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-recordstores"></p>
+</div><div class="card" id="soppack-appraisers">
+<h3>SOP Pack for Appraisers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for real estate appraisers — intake, inspections, comp discipline, USPAP, and the turn times that win lender panels.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-appraisers" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-appraisers')">Get it</button>
+<p class="msg" id="msg-soppack-appraisers"></p>
+</div><div class="card" id="swipefile-virtualassistants">
+<h3>Swipe File for Virtual Assistants</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for virtual assistants — booking, retainers, upsells, and the reviews that fill the waitlist.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-virtualassistants" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-virtualassistants')">Get it</button>
+<p class="msg" id="msg-swipefile-virtualassistants"></p>
+</div><div class="card" id="alertdigest-dentallabs">
+<h3>Alert Digest for Dental Labs</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your lab, every morning. Three minutes, then back to the bench.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-dentallabs" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-dentallabs')">Get it</button>
+<p class="msg" id="msg-alertdigest-dentallabs"></p>
+</div><div class="card" id="proposalkit-waterproofing">
+<h3>Proposal Kit for Basement Waterproofing</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for waterproofing jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-waterproofing" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-waterproofing')">Get it</button>
+<p class="msg" id="msg-proposalkit-waterproofing"></p>
+</div><div class="card" id="reviewmonitor-surfshops">
+<h3>Review Monitor for Surf Shops</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-surfshops" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-surfshops')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-surfshops"></p>
+</div><div class="card" id="soppack-itconsultants">
+<h3>SOP Pack for IT Consultants</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for IT consultants and MSPs — intake, security assessments, backups, cloud migrations, and the QBRs that renew retainers.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-itconsultants" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-itconsultants')">Get it</button>
+<p class="msg" id="msg-soppack-itconsultants"></p>
+</div><div class="card" id="swipefile-seoagencies">
+<h3>Swipe File for SEO Agencies</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for SEO agencies — audits, retainers, upsells, and the reports that prove ROI.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-seoagencies" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-seoagencies')">Get it</button>
+<p class="msg" id="msg-swipefile-seoagencies"></p>
+</div><div class="card" id="alertdigest-ptclinics">
+<h3>Alert Digest for Physical Therapy Clinics</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your clinic, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-ptclinics" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-ptclinics')">Get it</button>
+<p class="msg" id="msg-alertdigest-ptclinics"></p>
+</div><div class="card" id="proposalkit-drywall">
+<h3>Proposal Kit for Drywall Contractors</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for drywall jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-drywall" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-drywall')">Get it</button>
+<p class="msg" id="msg-proposalkit-drywall"></p>
+</div><div class="card" id="reviewmonitor-thriftstores">
+<h3>Review Monitor for Thrift Stores</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-thriftstores" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-thriftstores')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-thriftstores"></p>
+</div><div class="card" id="soppack-webdesigners">
+<h3>SOP Pack for Web Designers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for web designers — discovery calls, deposits, content collection, launch checklists, and the care plans that pay monthly.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-webdesigners" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-webdesigners')">Get it</button>
+<p class="msg" id="msg-soppack-webdesigners"></p>
+</div><div class="card" id="swipefile-videoeditors">
+<h3>Swipe File for Video Editors</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for video editors — booking, retainers, upsells, and the turnaround guarantees that close.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-videoeditors" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-videoeditors')">Get it</button>
+<p class="msg" id="msg-swipefile-videoeditors"></p>
+</div><div class="card" id="alertdigest-homecare">
+<h3>Alert Digest for Home Care Agencies</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your agency, every morning. Three minutes, then back to caregivers.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-homecare" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-homecare')">Get it</button>
+<p class="msg" id="msg-alertdigest-homecare"></p>
+</div><div class="card" id="proposalkit-flooring">
+<h3>Proposal Kit for Flooring Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for flooring jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-flooring" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-flooring')">Get it</button>
+<p class="msg" id="msg-proposalkit-flooring"></p>
+</div><div class="card" id="reviewmonitor-tennisclubs">
+<h3>Review Monitor for Tennis Clubs</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-tennisclubs" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-tennisclubs')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-tennisclubs"></p>
+</div><div class="card" id="soppack-payrollservices">
+<h3>SOP Pack for Payroll Services</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for payroll services — onboarding, multi-state compliance, garnishments, year-end W-2s, and the client communication that keeps retention.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-payrollservices" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-payrollservices')">Get it</button>
+<p class="msg" id="msg-soppack-payrollservices"></p>
+</div><div class="card" id="swipefile-transcriptionservices">
+<h3>Swipe File for Transcription Services</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for transcription services — booking, retainers, accuracy guarantees, and the turnaround promises that close.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-transcriptionservices" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-transcriptionservices')">Get it</button>
+<p class="msg" id="msg-swipefile-transcriptionservices"></p>
+</div><div class="card" id="alertdigest-acupuncturists">
+<h3>Alert Digest for Acupuncturists</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your practice, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-acupuncturists" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-acupuncturists')">Get it</button>
+<p class="msg" id="msg-alertdigest-acupuncturists"></p>
+</div><div class="card" id="proposalkit-countertops">
+<h3>Proposal Kit for Countertop Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for countertop jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-countertops" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-countertops')">Get it</button>
+<p class="msg" id="msg-proposalkit-countertops"></p>
+</div><div class="card" id="reviewmonitor-antiqueshops">
+<h3>Review Monitor for Antique Shops</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-antiqueshops" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-antiqueshops')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-antiqueshops"></p>
+</div><div class="card" id="soppack-translationservices">
+<h3>SOP Pack for Translation Services</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for translation services — intake, CAT tools, certified translations, QA, and the pricing that keeps you out of the race to the bottom.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-translationservices" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-translationservices')">Get it</button>
+<p class="msg" id="msg-soppack-translationservices"></p>
+</div><div class="card" id="swipefile-golfinstructors">
+<h3>Swipe File for Golf Instructors</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for golf instructors — booking, lesson packages, reactivations, and the swing-fix promises that fill the book.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-golfinstructors" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-golfinstructors')">Get it</button>
+<p class="msg" id="msg-swipefile-golfinstructors"></p>
+</div><div class="card" id="alertdigest-microblading">
+<h3>Alert Digest for Microblading Studios</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your studio, every morning. Three minutes, then back to clients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-microblading" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-microblading')">Get it</button>
+<p class="msg" id="msg-alertdigest-microblading"></p>
+</div><div class="card" id="proposalkit-outdoorkitchens">
+<h3>Proposal Kit for Outdoor Kitchen Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for outdoor kitchen jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-outdoorkitchens" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-outdoorkitchens')">Get it</button>
+<p class="msg" id="msg-proposalkit-outdoorkitchens"></p>
+</div><div class="card" id="reviewmonitor-farmersmarkets">
+<h3>Review Monitor for Farmers Markets</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-farmersmarkets" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-farmersmarkets')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-farmersmarkets"></p>
+</div><div class="card" id="soppack-massagetherapists">
+<h3>SOP Pack for Massage Therapists</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for massage therapists — intake, pressure calibration, draping, protocols, and the rebooking engine that fills the book.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-massagetherapists" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-massagetherapists')">Get it</button>
+<p class="msg" id="msg-soppack-massagetherapists"></p>
+</div><div class="card" id="swipefile-runningstores">
+<h3>Swipe File for Running Stores</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for running stores — fittings, group runs, reactivations, and the gait-analysis hooks that fill the store.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-runningstores" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-runningstores')">Get it</button>
+<p class="msg" id="msg-swipefile-runningstores"></p>
+</div><div class="card" id="alertdigest-tattooremoval">
+<h3>Alert Digest for Tattoo Removal Clinics</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your clinic, every morning. Three minutes, then back to clients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-tattooremoval" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-tattooremoval')">Get it</button>
+<p class="msg" id="msg-alertdigest-tattooremoval"></p>
+</div><div class="card" id="proposalkit-radonmitigation">
+<h3>Proposal Kit for Radon Mitigation</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for radon jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-radonmitigation" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-radonmitigation')">Get it</button>
+<p class="msg" id="msg-proposalkit-radonmitigation"></p>
+</div><div class="card" id="reviewmonitor-consignmentshops">
+<h3>Review Monitor for Consignment Shops</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-consignmentshops" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-consignmentshops')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-consignmentshops"></p>
+</div><div class="card" id="soppack-floatspas">
+<h3>SOP Pack for Float Spas</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for float spas — water chemistry, pod turnover, memberships, and the orientation talk that converts first-timers.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-floatspas" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-floatspas')">Get it</button>
+<p class="msg" id="msg-soppack-floatspas"></p>
+</div><div class="card" id="swipefile-homebrewingshops">
+<h3>Swipe File for Homebrewing Shops</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for homebrew shops — starter kits, brew-day demos, reactivations, and the recipe-rescue hooks that build regulars.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-homebrewingshops" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-homebrewingshops')">Get it</button>
+<p class="msg" id="msg-swipefile-homebrewingshops"></p>
+</div><div class="card" id="alertdigest-urgentcare">
+<h3>Alert Digest for Urgent Care Centers</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your clinic, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-urgentcare" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-urgentcare')">Get it</button>
+<p class="msg" id="msg-alertdigest-urgentcare"></p>
+</div><div class="card" id="proposalkit-moldremediation">
+<h3>Proposal Kit for Mold Remediation</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for mold jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-moldremediation" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-moldremediation')">Get it</button>
+<p class="msg" id="msg-proposalkit-moldremediation"></p>
+</div><div class="card" id="reviewmonitor-petboarding">
+<h3>Review Monitor for Pet Boarding</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-petboarding" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-petboarding')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-petboarding"></p>
+</div><div class="card" id="soppack-weddingofficiants">
+<h3>SOP Pack for Wedding Officiants</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for wedding officiants — discovery calls, ceremony drafts, legal checks, rehearsals, and the emergency plans that save the day.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-weddingofficiants" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-weddingofficiants')">Get it</button>
+<p class="msg" id="msg-soppack-weddingofficiants"></p>
+</div><div class="card" id="swipefile-skishops">
+<h3>Swipe File for Ski Shops</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for ski shops — boot fits, tune clinics, demo weekends, and the seasonal hooks that fill the bench.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-skishops" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-skishops')">Get it</button>
+<p class="msg" id="msg-swipefile-skishops"></p>
+</div><div class="card" id="alertdigest">
+<h3>AlertDigest</h3>
+<p class="price">$0.10 per digest</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="alertdigest" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest')">Get it</button>
+<p class="msg" id="msg-alertdigest"></p>
+</div><div class="card" id="alertdigest-dev">
+<h3>AlertDigest</h3>
+<p class="price">$0.10 per digest</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="alertdigest-dev" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-dev')">Get it</button>
+<p class="msg" id="msg-alertdigest-dev"></p>
+</div><div class="card" id="contractpack">
+<h3>ContractPack</h3>
+<p class="price">$29 one-time</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="contractpack" type="email" placeholder="you@example.com">
+<button onclick="notify('contractpack')">Get it</button>
+<p class="msg" id="msg-contractpack"></p>
+</div><div class="card" id="proposalkit">
+<h3>ProposalKit</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="proposalkit" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit')">Get it</button>
+<p class="msg" id="msg-proposalkit"></p>
+</div><div class="card" id="proposalkit-dev">
+<h3>ProposalKit</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="proposalkit-dev" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-dev')">Get it</button>
+<p class="msg" id="msg-proposalkit-dev"></p>
+</div><div class="card" id="alertdigest-directprimarycare">
+<h3>Alert Digest for Direct Primary Care Practices</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your practice, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-directprimarycare" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-directprimarycare')">Get it</button>
+<p class="msg" id="msg-alertdigest-directprimarycare"></p>
+</div><div class="card" id="proposalkit-hometheater">
+<h3>Proposal Kit for Home Theater Installers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for home theater jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-hometheater" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-hometheater')">Get it</button>
+<p class="msg" id="msg-proposalkit-hometheater"></p>
+</div><div class="card" id="reviewmonitor-piercingstudios">
+<h3>Review Monitor for Piercing Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-piercingstudios" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-piercingstudios')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-piercingstudios"></p>
+</div><div class="card" id="soppack-windowtinting">
+<h3>SOP Pack for Window Tinting Shops</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for window tinting shops — quoting, prep, shrinking, install, cure care, and the legal VLT rules that keep you out of trouble.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-windowtinting" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-windowtinting')">Get it</button>
+<p class="msg" id="msg-soppack-windowtinting"></p>
+</div><div class="card" id="swipefile-ceramiccoating">
+<h3>Swipe File for Ceramic Coating Shops</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for ceramic coating shops — booking hooks, tiered pricing, upsells, and the seasonal angles that fill the bay.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-ceramiccoating" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-ceramiccoating')">Get it</button>
+<p class="msg" id="msg-swipefile-ceramiccoating"></p>
+</div><div class="card" id="alertdigest-weightloss">
+<h3>Alert Digest for Weight-Loss Clinics</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your clinic, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-weightloss" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-weightloss')">Get it</button>
+<p class="msg" id="msg-alertdigest-weightloss"></p>
+</div><div class="card" id="proposalkit-firedamage">
+<h3>Proposal Kit for Fire Damage Restoration</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for fire restoration jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-firedamage" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-firedamage')">Get it</button>
+<p class="msg" id="msg-proposalkit-firedamage"></p>
+</div><div class="card" id="reviewmonitor-karaokebars">
+<h3>Review Monitor for Karaoke Bars</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-karaokebars" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-karaokebars')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-karaokebars"></p>
+</div><div class="card" id="soppack-autoupholstery">
+<h3>SOP Pack for Auto Upholstery Shops</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for auto upholstery shops — intake, tear-down, pattern making, sewing, and the install details that separate pros from amateurs.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-autoupholstery" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-autoupholstery')">Get it</button>
+<p class="msg" id="msg-soppack-autoupholstery"></p>
+</div><div class="card" id="swipefile-camerainstallers">
+<h3>Swipe File for Security Camera Installers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for security camera installers — booking hooks, no-monthly-fee angles, and the commercial upsells that grow tickets.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-camerainstallers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-camerainstallers')">Get it</button>
+<p class="msg" id="msg-swipefile-camerainstallers"></p>
+</div><div class="card" id="alertdigest-conciergemed">
+<h3>Alert Digest for Concierge Medicine</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your practice, every morning. Three minutes, then back to patients.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-conciergemed" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-conciergemed')">Get it</button>
+<p class="msg" id="msg-alertdigest-conciergemed"></p>
+</div><div class="card" id="proposalkit-stormdamage">
+<h3>Proposal Kit for Storm Damage Repair</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for storm jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-stormdamage" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-stormdamage')">Get it</button>
+<p class="msg" id="msg-proposalkit-stormdamage"></p>
+</div><div class="card" id="reviewmonitor-mobilevet">
+<h3>Review Monitor for Mobile Vet Services</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-mobilevet" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-mobilevet')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-mobilevet"></p>
+</div><div class="card" id="soppack-homeautomation">
+<h3>SOP Pack for Home Automation Installers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for home automation installers — surveys, network foundations, programming, and the handoff habits that kill callbacks.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-homeautomation" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-homeautomation')">Get it</button>
+<p class="msg" id="msg-soppack-homeautomation"></p>
+</div><div class="card" id="swipefile-weddingcaterers">
+<h3>Swipe File for Wedding Caterers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for wedding caterers — booking hooks, tasting closers, and the upsells that grow per-guest revenue.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-weddingcaterers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-weddingcaterers')">Get it</button>
+<p class="msg" id="msg-swipefile-weddingcaterers"></p>
+</div><div class="card" id="alertdigest-reinvestors">
+<h3>Alert Digest for Real Estate Investors</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that move your next deal, every morning. Three minutes, then back to underwriting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-reinvestors" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-reinvestors')">Get it</button>
+<p class="msg" id="msg-alertdigest-reinvestors"></p>
+</div><div class="card" id="proposalkit-deckstaining">
+<h3>Proposal Kit for Deck Staining Services</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for deck jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-deckstaining" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-deckstaining')">Get it</button>
+<p class="msg" id="msg-proposalkit-deckstaining"></p>
+</div><div class="card" id="reviewmonitor-eyelashstudios">
+<h3>Review Monitor for Eyelash Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-eyelashstudios" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-eyelashstudios')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-eyelashstudios"></p>
+</div><div class="card" id="soppack-horsetrainers">
+<h3>SOP Pack for Horse Trainers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for horse trainers — intake, groundwork, starting young horses, and the business systems that keep stalls full.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-horsetrainers" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-horsetrainers')">Get it</button>
+<p class="msg" id="msg-soppack-horsetrainers"></p>
+</div><div class="card" id="swipefile-balloonartists">
+<h3>Swipe File for Balloon Artists</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for balloon artists — booking hooks, upsells, and the corporate packages that pay the rent.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-balloonartists" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-balloonartists')">Get it</button>
+<p class="msg" id="msg-swipefile-balloonartists"></p>
+</div><div class="card" id="alertdigest-crawlspace">
+<h3>Alert Digest for Crawl Space Contractors</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that move your next encapsulation job, every morning. Three minutes, then back to the crawl space.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-crawlspace" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-crawlspace')">Get it</button>
+<p class="msg" id="msg-alertdigest-crawlspace"></p>
+</div><div class="card" id="proposalkit-hottubmovers">
+<h3>Proposal Kit for Hot Tub Movers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for hot tub moves in seconds — crane jobs to dealer routes.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-hottubmovers" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-hottubmovers')">Get it</button>
+<p class="msg" id="msg-proposalkit-hottubmovers"></p>
+</div><div class="card" id="reviewmonitor-arcadebars">
+<h3>Review Monitor for Arcade Bars</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-arcadebars" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-arcadebars')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-arcadebars"></p>
+</div><div class="card" id="soppack-icecreamshops">
+<h3>SOP Pack for Ice Cream Shops</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for ice cream shops — batch freezing, flavor rotation, health inspections, and surviving the winter slow season.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-icecreamshops" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-icecreamshops')">Get it</button>
+<p class="msg" id="msg-soppack-icecreamshops"></p>
+</div><div class="card" id="swipefile-cocktailbars">
+<h3>Swipe File for Craft Cocktail Bars</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for craft cocktail bars — bookings, upsells, and the private events that pay the rent.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-cocktailbars" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-cocktailbars')">Get it</button>
+<p class="msg" id="msg-swipefile-cocktailbars"></p>
+</div><div class="card" id="agencydirectory">
+<h3>AgencyDirectory</h3>
+<p class="price">$29 one-time</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="agencydirectory" type="email" placeholder="you@example.com">
+<button onclick="notify('agencydirectory')">Get it</button>
+<p class="msg" id="msg-agencydirectory"></p>
+</div><div class="card" id="onboardkit">
+<h3>OnboardKit</h3>
+<p class="price">$19 one-time</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="onboardkit" type="email" placeholder="you@example.com">
+<button onclick="notify('onboardkit')">Get it</button>
+<p class="msg" id="msg-onboardkit"></p>
+</div><div class="card" id="pricetracker">
+<h3>PriceTracker</h3>
+<p class="price">$0.10 per tracked</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="pricetracker" type="email" placeholder="you@example.com">
+<button onclick="notify('pricetracker')">Get it</button>
+<p class="msg" id="msg-pricetracker"></p>
+</div><div class="card" id="repupage">
+<h3>RepuPage</h3>
+<p class="price">$0.10 per page</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="repupage" type="email" placeholder="you@example.com">
+<button onclick="notify('repupage')">Get it</button>
+<p class="msg" id="msg-repupage"></p>
+</div><div class="card" id="reviewmonitor">
+<h3>ReviewMonitor</h3>
+<p class="price">$0.10 per monitored</p>
+<p>Get notified when this launches.</p>
+<p class="blurb"></p>
+<input data-kit="reviewmonitor" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor')">Get it</button>
+<p class="msg" id="msg-reviewmonitor"></p>
+</div><div class="card" id="soppack-dentists">
+<h3>SOP Pack for Dentists</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a dental practice repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-dentists" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-dentists')">Get it</button>
+<p class="msg" id="msg-soppack-dentists"></p>
+</div><div class="card" id="soppack-designers">
+<h3>SOP Pack for Freelance Designers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for the 20 jobs freelance designers repeat on every client.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-designers" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-designers')">Get it</button>
+<p class="msg" id="msg-soppack-designers"></p>
+</div><div class="card" id="soppack-mortgage">
+<h3>SOP Pack for Mortgage Brokers</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use SOPs for the 20 jobs a mortgage practice repeats on every file.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-mortgage" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-mortgage')">Get it</button>
+<p class="msg" id="msg-soppack-mortgage"></p>
+</div><div class="card" id="swipefile-realtors">
+<h3>Swipe File for Realtors</h3>
+<p class="price">$15 one-time</p>
+<p>50 proven listing and outreach examples for realtors, each annotated with why it works.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-realtors" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-realtors')">Get it</button>
+<p class="msg" id="msg-swipefile-realtors"></p>
+</div><div class="card" id="swipefile-writers">
+<h3>Swipe File for Freelance Writers</h3>
+<p class="price">$15 one-time</p>
+<p>50 proven copy examples for freelance writers, each annotated with why it works.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-writers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-writers')">Get it</button>
+<p class="msg" id="msg-swipefile-writers"></p>
+</div><div class="card" id="alertdigest-medspas">
+<h3>Alert Digest for Med Spas</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your med spa, every morning: regulations, trends, competitor moves. Three minutes, then back to work.</p>
+<p class="blurb"></p>
+<input data-kit="alertdigest-medspas" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-medspas')">Get it</button>
+<p class="msg" id="msg-alertdigest-medspas"></p>
+</div><div class="card" id="proposalkit-landscapers">
+<h3>Proposal Kit for Landscapers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished client proposals in seconds: 3 landscaper-specific templates with anchored 3-tier pricing psychology and a RECOMMENDED badge.</p>
+<p class="blurb"></p>
+<input data-kit="proposalkit-landscapers" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-landscapers')">Get it</button>
+<p class="msg" id="msg-proposalkit-landscapers"></p>
+</div><div class="card" id="reviewmonitor-petgroomers">
+<h3>Review Monitor for Pet Groomers</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a review again: we watch your Google and Yelp reviews, flag anything 3 stars or below, and draft the response for you.</p>
+<p class="blurb"></p>
+<input data-kit="reviewmonitor-petgroomers" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-petgroomers')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-petgroomers"></p>
+</div><div class="card" id="soppack-roofers">
+<h3>SOP Pack for Roofers</h3>
+<p class="price">$19 one-time</p>
+<p>20 battle-tested SOPs for the jobs every roofing crew repeats: inspections, tear-offs, flashing, claims, callbacks.</p>
+<p class="blurb"></p>
+<input data-kit="soppack-roofers" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-roofers')">Get it</button>
+<p class="msg" id="msg-soppack-roofers"></p>
+</div><div class="card" id="swipefile-gyms">
+<h3>Swipe File for Gyms</h3>
+<p class="price">$15 one-time</p>
+<p>50 proven marketing lines for gyms and fitness studios — trials, memberships, PT, classes, reactivations — each annotated with why it works.</p>
+<p class="blurb"></p>
+<input data-kit="swipefile-gyms" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-gyms')">Get it</button>
+<p class="msg" id="msg-swipefile-gyms"></p>
+</div><div class="card" id="alertdigest-chiropractors">
+<h3>AlertDigest for Chiropractors</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter each morning: board rules, payer changes, fresh evidence, local competition, and ranking shifts.</p>
+<p class="blurb"></p>
+<input data-kit="alertdigest-chiropractors" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-chiropractors')">Get it</button>
+<p class="msg" id="msg-alertdigest-chiropractors"></p>
+</div><div class="card" id="proposalkit-plumbers">
+<h3>ProposalKit for Plumbers</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Proposal generator with 3 plumber templates and built-in 3-tier pricing psychology — the middle option sells itself.</p>
+<p class="blurb"></p>
+<input data-kit="proposalkit-plumbers" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-plumbers')">Get it</button>
+<p class="msg" id="msg-proposalkit-plumbers"></p>
+</div><div class="card" id="reviewmonitor-coffeeshops">
+<h3>ReviewMonitor for Coffee Shops</h3>
+<p class="price">$0.10 per check</p>
+<p>Bad-review alerts within the hour, with calm drafted responses — before a 2-star review costs you the morning rush.</p>
+<p class="blurb"></p>
+<input data-kit="reviewmonitor-coffeeshops" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-coffeeshops')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-coffeeshops"></p>
+</div><div class="card" id="soppack-hvac">
+<h3>SOP Pack for HVAC Contractors</h3>
+<p class="price">$19 one-time</p>
+<p>20 field-tested SOPs: tune-ups, no-heat triage, leak checks, commissioning, and the callbacks that kill margins.</p>
+<p class="blurb"></p>
+<input data-kit="soppack-hvac" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-hvac')">Get it</button>
+<p class="msg" id="msg-soppack-hvac"></p>
+</div><div class="card" id="swipefile-cardetailers">
+<h3>Swipe File for Car Detailers</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated copy swipes: booking nudges, upsells, reactivations, referrals, review asks, and objection handlers — each with why it works.</p>
+<p class="blurb"></p>
+<input data-kit="swipefile-cardetailers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-cardetailers')">Get it</button>
+<p class="msg" id="msg-swipefile-cardetailers"></p>
+</div><div class="card" id="alertdigest-autorepair">
+<h3>Alert Digest for Auto Repair Shops</h3>
+<p class="price">Free 30 days, then $0.10 per digest</p>
+<p>The 5 signals that matter to your shop, every morning. Recalls, regulation, parts pricing, labor trends — three minutes, then back to work.</p>
+<p class="blurb">Leave your email — first 30 days free.</p>
+<input data-kit="alertdigest-autorepair" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-autorepair')">Get it</button>
+<p class="msg" id="msg-alertdigest-autorepair"></p>
+</div><div class="card" id="proposalkit-electricians">
+<h3>Proposal Kit for Electricians</h3>
+<p class="price">$0.10 per generated proposal</p>
+<p>Win more jobs with proposals that sell: 4 electrician-specific templates with anchored 3-tier pricing and a RECOMMENDED badge.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your first proposal link.</p>
+<input data-kit="proposalkit-electricians" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-electricians')">Get it</button>
+<p class="msg" id="msg-proposalkit-electricians"></p>
+</div><div class="card" id="reviewmonitor-tattoo">
+<h3>Review Monitor for Tattoo Studios</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a review again: daily monitoring of your Google and Yelp reviews, instant alerts on anything under 4 stars, and a drafted response for every single one.</p>
+<p class="blurb">Leave your email and we&#x27;ll watch your first week free.</p>
+<input data-kit="reviewmonitor-tattoo" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-tattoo')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-tattoo"></p>
+</div><div class="card" id="soppack-barbershops">
+<h3>SOP Pack for Barbershops</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a barbershop repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-barbershops" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-barbershops')">Get it</button>
+<p class="msg" id="msg-soppack-barbershops"></p>
+</div><div class="card" id="swipefile-bakeries">
+<h3>Swipe File for Bakeries</h3>
+<p class="price">$15 one-time</p>
+<p>50 proven marketing messages for bakeries — Instagram captions, promos, seasonal offers, email subjects, SMS blasts — each annotated with why it works.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-bakeries" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-bakeries')">Get it</button>
+<p class="msg" id="msg-swipefile-bakeries"></p>
+</div><div class="card" id="alertdigest-breweries">
+<h3>Alert Digest for Breweries</h3>
+<p class="price">Free 30 days, then $0.10/digest</p>
+<p>The 5 signals that matter to your brewery, every morning. Three minutes, then back to work.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="alertdigest-breweries" type="email" placeholder="you@example.com">
+<button onclick="notify('alertdigest-breweries')">Get it</button>
+<p class="msg" id="msg-alertdigest-breweries"></p>
+</div><div class="card" id="proposalkit-pestcontrol">
+<h3>Proposal Kit for Pest Control</h3>
+<p class="price">$0.10 per proposal</p>
+<p>Generate polished 3-tier proposals for pest control jobs in seconds — pricing psychology built in.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="proposalkit-pestcontrol" type="email" placeholder="you@example.com">
+<button onclick="notify('proposalkit-pestcontrol')">Get it</button>
+<p class="msg" id="msg-proposalkit-pestcontrol"></p>
+</div><div class="card" id="reviewmonitor-carwash">
+<h3>Review Monitor for Car Washes</h3>
+<p class="price">$0.10 per check</p>
+<p>Never miss a bad review again — daily diff of your ratings with drafted replies for the ones that sting.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="reviewmonitor-carwash" type="email" placeholder="you@example.com">
+<button onclick="notify('reviewmonitor-carwash')">Get it</button>
+<p class="msg" id="msg-reviewmonitor-carwash"></p>
+</div><div class="card" id="soppack-florists">
+<h3>SOP Pack for Florists</h3>
+<p class="price">$19 one-time</p>
+<p>20 ready-to-use standard operating procedures for the 20 jobs a flower shop repeats every week.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="soppack-florists" type="email" placeholder="you@example.com">
+<button onclick="notify('soppack-florists')">Get it</button>
+<p class="msg" id="msg-soppack-florists"></p>
+</div><div class="card" id="swipefile-movers">
+<h3>Swipe File for Moving Companies</h3>
+<p class="price">$15 one-time</p>
+<p>50 annotated, ready-to-send marketing messages for movers — booking, upsell, reactivation, referrals.</p>
+<p class="blurb">Leave your email and we&#x27;ll send your download link.</p>
+<input data-kit="swipefile-movers" type="email" placeholder="you@example.com">
+<button onclick="notify('swipefile-movers')">Get it</button>
+<p class="msg" id="msg-swipefile-movers"></p>
+</div>
+</div>
+<footer>Leave your email on any kit and we'll send the download link. Tiger Operations, 2026.</footer>
+<script>
+function filterKits(){
+  const q=document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    c.style.display=c.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+async function notify(slug){
+  const input=document.querySelector('input[data-kit="'+slug+'"]');
+  const email=input.value.trim();
+  const msg=document.getElementById('msg-'+slug);
+  if(!email||!email.includes('@')){msg.textContent='Enter a valid email.';return;}
+  msg.textContent='Sending...';
+  try{
+    const r=await fetch('/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({kit:slug,email})});
+    msg.textContent=r.ok?'Got it — check your inbox soon.':'Something went wrong, try again.';
+  }catch(e){msg.textContent='Something went wrong, try again.';}
+}
+</script>
+</body></html>
